@@ -1,0 +1,23 @@
+/* Start footer.scss */
+div {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+p {
+  transition: opacity 100ms linear;
+  width: fit-content;
+  text-align: center;
+  opacity: 0%;
+  &:hover {
+    opacity: 66%;
+  }
+  > a {
+    color: inherit;
+  }
+}
+/* End footer.scss */

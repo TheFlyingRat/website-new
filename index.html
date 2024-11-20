@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="en-AU">
+    <meta name="language" content="English">
+    <meta name="author" content="Joey Manani">    
+    <link rel="canonical" href="https://theflyingrat.com">
+    <style>
+      /* My favorite way of preventing FOUC while allowing bots to detect content hence 0.001 opacity */
+      body {
+        opacity: 0.001;
+        transition: opacity 200ms;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      window.onload = function() {
+        console.log("[INFO/STAT] Body has finished painting content.")
+        document.getElementsByTagName("body")[0].style.opacity = 1;
+      }
+    </script>
+  </body>
+</html>

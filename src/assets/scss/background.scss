@@ -1,0 +1,33 @@
+/* Start background.scss */
+@import "../../_variables.scss";
+
+.background-wrapper {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+}
+
+.background-wrapper > div {
+    color: $hackerText;
+    opacity: 0.1;
+    white-space: pre-wrap;  /* Ensure ASCII art is displayed as is in txt file */
+    font-family: monospace;
+    font-size: 1vh; /* fit screen */
+    text-align: center;
+}
+
+.selector {
+    opacity: 0.5!important;
+    position: absolute;
+  }
+
+@media only screen and (min-width: 1150px) {
+    div {
+        font-size: 0.7vw;
+    }
+}
+/* End background.scss */
