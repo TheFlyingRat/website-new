@@ -78,7 +78,7 @@ function base64ToBlob(base64Data) {
 
 // Preload all the audio files
 async function preloadAllSounds() {
-  const sounds = ["select", "open", "close"];
+  const sounds = ["select", "open", "close", "text"];
   await Promise.all(sounds.map(preloadAudio)); // Ensure all preloads are completed
 }
 
@@ -93,6 +93,9 @@ export async function playSound(sound) {
     if (audioCache[sound]) {
       const audioElement = audioThread1.paused ? audioThread1 : audioThread2;
       audioElement.src = audioCache[sound];
+
+      if (sound === "open" || sound === "close") {audioElement.volume = 0.3}; // volume for open/close is too loud
+      audioElement.addEventListener("ended", (e) => audioElement.volume = 1); //reset vol
       const playPromise = audioElement.play();
       if (playPromise !== undefined) {
         playPromise.catch(function (error) {
@@ -100,10 +103,10 @@ export async function playSound(sound) {
         });
       }
     } else {
-      console.log(`Audio data for ${sound} not found in cache.`);
+      console.warn(`Audio data for ${sound} not found in cache.`);
     }
   } catch (error) {
-    console.log("Couldn't play sound because of an error: " + error);
+    console.error("Couldn't play sound because of an error: " + error);
   }
 }
 
