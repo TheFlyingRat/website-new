@@ -58,4 +58,16 @@
 }
 
 .reveal { opacity: 0%; pointer-events: none; } // Prevent clicking during loadin animation
+
+@media screen and (max-width: 650px) {
+  .content {
+    top: 12vw;
+    flex-direction: column;
+    align-items: center;
+    > .hacker-border {
+      width: 95% !important;
+    }
+  }
+}
+
 /* End content.scss */
