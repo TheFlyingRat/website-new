@@ -18,9 +18,11 @@
   });
 </script>
 
-<div class="title" bind:this={titleContainer}>
-  <div class="title-text">
-    <div class="break-left">[</div><div>{displayedText}</div><div class="break-right">]</div>
+<div class="title-container" bind:this={titleContainer}>
+  <div class="title">
+    <div class="title-text">
+      <div class="break-left">[</div><div>{displayedText}</div><div class="break-right">]</div>
+    </div>
   </div>
 </div>
 
