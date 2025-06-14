@@ -1,5 +1,5 @@
 import { gsap } from "gsap";
-import { playSound } from "./audioUtils";
+import { playSound, audioThread1, audioThread2 } from "./audioUtils";
 
 export function setupTitleAnimation({ targetText, displayedText, titleContainer, setDisplayedText }) {
   const shuffleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // only shuffle a-z
@@ -11,9 +11,19 @@ export function setupTitleAnimation({ targetText, displayedText, titleContainer,
 
   // Function to animate the title text
   function animateTitle() {
-    const timeline2 = gsap.timeline({ onComplete: moveToTop });
+    const timeline2 = gsap.timeline({
+      onComplete: () => {
+        audioThread1.pause();
+        audioThread2.pause();
+        audioThread1.currentTime = 0;
+        audioThread2.currentTime = 0;
+        moveToTop();
+      }
+    });
     timeline2.delay(1.2);
     let currentText = displayedText.split("");
+
+    timeline2.call(playSound, ["text"], 0);
 
     for (let i = 0; i < targetText.length; i++) {
       // Add shuffle animations for all characters
@@ -22,7 +32,6 @@ export function setupTitleAnimation({ targetText, displayedText, titleContainer,
         {
           duration: 0.2, // Each character resolves after 0.2s
           onUpdate: () => {
-            if (i < targetText.length -1) { playSound("text"); }; // Don't play on the last character
             for (let j = i; j < targetText.length; j++) {
               if (j > i) currentText[j] = getRandomChar(); // Shuffle unresolved characters
             }
