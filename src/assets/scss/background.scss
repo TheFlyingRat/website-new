@@ -3,31 +3,15 @@
 
 .background-wrapper {
     position: absolute;
-    overflow: hidden;
+    overflow: initial;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     z-index: -1;
-}
-
-.background-wrapper > div {
-    color: $hackerText;
-    opacity: 0.1;
-    white-space: pre-wrap;  /* Ensure ASCII art is displayed as is in txt file */
-    font-family: monospace;
-    font-size: 1vh; /* fit screen */
-    text-align: center;
-}
-
-.selector {
-    opacity: 0.5!important;
-    position: absolute;
-  }
-
-@media only screen and (min-width: 1150px) {
-    div {
-        font-size: 0.7vw;
+    > div {
+        opacity: 0.2;
     }
 }
+
 /* End background.scss */
