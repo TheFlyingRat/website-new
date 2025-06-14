@@ -7,8 +7,8 @@ export function updateColIdx(col, idx) {
 }
 
 // Audio threads for simultaneous playback
-const audioThread1 = new Audio();
-const audioThread2 = new Audio();
+export const audioThread1 = new Audio();
+export const audioThread2 = new Audio();
 
 // In-memory cache for the audio files
 const audioCache = {};
